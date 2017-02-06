@@ -5,6 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.io.BufferedOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
 /**
  * Created by Administrator on 2017/1/21.
  */
@@ -32,7 +37,46 @@ public class ProviderServiceImpl implements IProviderServiceInf {
         System.out.println();
         System.out.println(msg);
         System.out.println();
-        Thread.sleep(20000);
+        //Thread.sleep(20000);
+        Thread.sleep(5000);
         return msg;
     }
+
+    @Override
+    public boolean uploadFile(byte[] in) {
+        //debug-调试输入
+        //String str = new String(in);
+        //System.out.println(str);
+        ByteToFile("F:\\1\\2017-02-06-1035.pdf", in);
+        System.out.println("UPLOAD-OK");
+        return true;
+    }
+    //region将byte[]转化为文件
+    public  static File ByteToFile( String filePath,byte[] data)
+    {
+        File file = new File(filePath);
+        BufferedOutputStream stream = null;
+        FileOutputStream fstream = null;
+        //byte[] data=new byte[(int)file.length()];
+        try {
+            fstream = new FileOutputStream(file);
+            stream = new BufferedOutputStream(fstream);
+            stream.write(data);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (stream != null) {
+                    stream.close();
+                }
+                if (null != fstream) {
+                    fstream.close();
+                }
+            } catch (IOException e1) {
+                e1.printStackTrace();
+            }
+        }
+        return file;
+    }
+    //endregion
 }

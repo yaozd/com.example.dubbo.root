@@ -32,5 +32,6 @@ public class ApplicationConsumer {
 //        10.令牌验证--防止消费者绕过注册中心访问提供者、在注册中心控制权限，以决定要不要下发令牌给消费者、注册中心可灵活改变授权方式，而不需修改或升级提供者
         logger.info("项目启动--BEGIN");
         SpringApplication.run(ApplicationConsumer.class, args);
+        System.in.read();
     }
 }

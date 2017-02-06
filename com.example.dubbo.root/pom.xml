@@ -25,6 +25,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>1.8</java.version>
         <disruptor.version>3.3.4</disruptor.version>
+        <start-class></start-class>
     </properties>
     <build>
         <plugins>
@@ -33,8 +34,12 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>1.3.0.RELEASE</version>
-                <configuration><!-- 指定该Main Class为全局的唯一入口 -->
+                <configuration>
+                    <!-- 指定该Main Class为全局的唯一入口 -->
                     <!--<mainClass>com.yzd.Application</mainClass>-->
+                    <!--参考：Spring Boot 之路[3]-打包成可运行的jar-没办法找到唯一的一个入口类-->
+                    <!--http://www.jianshu.com/p/b521f819b06a-->
+                    <mainClass>${start-class}</mainClass>
                     <layout>ZIP</layout>
                 </configuration>
                 <executions>

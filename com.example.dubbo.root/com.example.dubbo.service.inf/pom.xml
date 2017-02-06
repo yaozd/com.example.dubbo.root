@@ -11,6 +11,10 @@
     <modelVersion>4.0.0</modelVersion>
     <artifactId>com.example.dubbo.service.inf</artifactId>
     <packaging>jar</packaging>
-
+    <properties>
+        <!--当前是一个接口定义的包为解决MAVEN打包成可运行的jar-没办法找到唯一的一个入口类问题-->
+        <!--设置了一个不存在的虚拟入口类-->
+        <start-class>com.example.dubbo.service.inf.ApplicationMainClass</start-class>
+    </properties>
 
 </project>

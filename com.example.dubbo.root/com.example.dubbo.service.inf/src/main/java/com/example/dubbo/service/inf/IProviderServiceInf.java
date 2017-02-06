@@ -6,4 +6,5 @@ package com.example.dubbo.service.inf;
 public interface IProviderServiceInf {
 
     public String sayHello(String name) throws InterruptedException;
+    public boolean uploadFile(byte[] in);
 }
