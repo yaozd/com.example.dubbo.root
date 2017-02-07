@@ -23,7 +23,7 @@
     <!--token="yklo":开启令牌认证-随机token令牌,防止消费者绕过注册中心直接访问提供者-->
     <!--loadbalance="random":负载均衡-->
     <!--<dubbo:service interface="com.example.dubbo.service.inf.IProviderServiceInf" ref="IProviderServiceInf" version="1.0.1" token="yklo" loadbalance="random"/>-->
-    <dubbo:service interface="com.example.dubbo.service.inf.IProviderServiceInf" ref="IProviderServiceInf" version="1.0.1"  loadbalance="random"/>
+    <dubbo:service interface="com.example.dubbo.service.inf.IProviderServiceInf" ref="IProviderServiceInf" version="1.0.1"  loadbalance="random" owner="yzd"/>
     <!-- 具体的实现bean -->
     <bean id="IProviderServiceInf" class="com.example.dubbo.service.provider.impl.ProviderServiceImpl" />
 </beans>
