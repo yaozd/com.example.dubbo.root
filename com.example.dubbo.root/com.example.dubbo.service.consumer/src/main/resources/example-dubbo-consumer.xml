@@ -13,6 +13,9 @@
 	<!-- 使用multicast广播注册中心暴露发现服务地址 -->
 	<dubbo:registry protocol="zookeeper" address="192.168.1.222:2181" />
 	<!-- 生成远程服务代理，可以和本地bean一样使用demoService -->
+
+    <dubbo:monitor protocol="registry"/>
+
     <!--version="1.0.1":当然服务的版本号-->
 	<dubbo:reference id="IProviderServiceInf" interface="com.example.dubbo.service.inf.IProviderServiceInf" version="1.0.1">
     <!--url="dubbo://localhost:29014":直连提供者-这个功能为开发测试用的，绕过注册中心，只测试指定服务提供者。（令牌验证-防止消费者绕过注册中心访问提供者）-->

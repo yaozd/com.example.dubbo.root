@@ -21,14 +21,22 @@ public class ConsumerService {
     //实现初始化之后进行的操作
     @PostConstruct
     public void init()throws InterruptedException {
-        String msg="";
-        msg=providerService.sayHello("哈哈哈~");
-        System.out.println("");
-        System.out.println(msg);
-        System.out.println("");
-        System.out.println("upload file--providerService.uploadFile");
-        providerService.uploadFile(fileToByteArray());
-        System.out.println("upload file ok");
+        //死循环--主要用于测试dubbo的监控统计
+        while (true){
+            try{
+                String msg="";
+                msg=providerService.sayHello("哈哈哈~");
+                System.out.println("");
+                System.out.println(msg);
+                System.out.println("");
+                System.out.println("upload file--providerService.uploadFile");
+                providerService.uploadFile(fileToByteArray());
+                System.out.println("upload file ok");
+            }catch (Exception ex){
+                ex.printStackTrace();
+            }
+        }
+
     }
     //将文件转化为byte[]
     public static byte[] fileToByteArray()

@@ -6,11 +6,14 @@
         http://code.alibabatech.com/schema/dubbo
         http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
     <!-- 提供方应用信息，用于计算依赖关系 -->
-    <dubbo:application name="com.example.dubbo.service.provider" logger="slf4j"/>
+    <dubbo:application name="com.example.dubbo.service.provider" logger="slf4j" organization="org-yzd" owner="master-yzd"/>
     <!-- zookeeper注册中心 -->
     <dubbo:registry protocol="zookeeper" address="192.168.1.222:2181" />
     <!-- 使用multicast广播注册中心暴露服务地址 -->
     <!-- <dubbo:registry address="multicast://10.57.41.19:1234" /> -->
+
+    <dubbo:monitor protocol="registry"/>
+
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <dubbo:protocol name="dubbo" port="29014" />
     <!--dubbo -payload默认为8M-->
@@ -23,7 +26,8 @@
     <!--token="yklo":开启令牌认证-随机token令牌,防止消费者绕过注册中心直接访问提供者-->
     <!--loadbalance="random":负载均衡-->
     <!--<dubbo:service interface="com.example.dubbo.service.inf.IProviderServiceInf" ref="IProviderServiceInf" version="1.0.1" token="yklo" loadbalance="random"/>-->
-    <dubbo:service interface="com.example.dubbo.service.inf.IProviderServiceInf" ref="IProviderServiceInf" version="1.0.1"  loadbalance="random" owner="yzd"/>
+    <!--<dubbo:service interface="com.example.dubbo.service.inf.IProviderServiceInf" ref="IProviderServiceInf" version="1.0.1"  loadbalance="random"  owner="yzd"/>-->
+    <dubbo:service interface="com.example.dubbo.service.inf.IProviderServiceInf" ref="IProviderServiceInf" version="1.0.1"  loadbalance="random" owner="ABCDEF"/>
     <!-- 具体的实现bean -->
     <bean id="IProviderServiceInf" class="com.example.dubbo.service.provider.impl.ProviderServiceImpl" />
 </beans>

@@ -38,7 +38,7 @@ public class ProviderServiceImpl implements IProviderServiceInf {
         System.out.println(msg);
         System.out.println();
         //Thread.sleep(20000);
-        Thread.sleep(5000);
+        //Thread.sleep(5000);
         return msg;
     }
 
